@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiệp Mời Tốt Nghiệp Có Sticker & Nhạc</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. THIẾT LẬP CHUNG --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background-color: #f7f5f0;
+            color: #4a3b32;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px 10px;
+        }
+
+        /* Khung thiệp */
+        .card-container {
+            width: 100%;
+            max-width: 450px;
+            background: #ffffff;
+            border: 8px double #d4af37;
+            border-radius: 20px;
+            padding: 25px 20px;
+            box-shadow: 0px 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            overflow: hidden; /* Để các sticker không bay ra ngoài khung */
+        }
+
+        /* Mẹo chỉnh sửa */
+        [contenteditable="true"]:hover {
+            background-color: #fffde7;
+            outline: 1px dashed #d4af37;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* --- 2. CÁC STICKER TRANG TRÍ (GIỐNG VIDEO) --- */
+        .sticker {
+            position: absolute;
+            font-size: 1.8rem;
+            pointer-events: none; /* Không làm vướng khi click đúp */
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.15));
+            animation: float 3s ease-in-out infinite;
+        }
+        /* Định vị từng sticker giống trong video */
+        .stk-cap1 { top: 90px; right: 110px; transform: rotate(15deg); z-index: 10; font-size: 2.2rem; }
+        .stk-book1 { top: 270px; left: 40px; transform: rotate(-20deg); }
+        .stk-cap2 { top: 380px; left: 30px; transform: rotate(-15deg); font-size: 2rem; }
+
+        /* Hiệu ứng bay bồng bềnh nhẹ nhàng */
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(var(--rot, 0deg)); }
+            50% { transform: translateY(-8px) rotate(var(--rot, 0deg)); }
+        }
+        .stk-cap1 { --rot: 15deg; }
+        .stk-book1 { --rot: -20deg; }
+        .stk-cap2 { --rot: -15deg; }
+
+        /* --- 3. TRÌNH PHÁT NHẠC --- */
+        .music-player {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            z-index: 100;
+            cursor: pointer;
+        }
+        .disc {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: #222 url('https://cdn-icons-png.flaticon.com/512/3659/3659851.png') no-repeat center;
+            background-size: cover;
+            border: 2px solid #d4af37;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .rotate { animation: spin 4s linear infinite; }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
+
+        /* --- 4. GIAO DIỆN NỘI DUNG --- */
+        h1, h2, .script-font { font-family: 'Dancing Script', cursive; color: #b8860b; }
+        h1 { font-size: 2.2rem; margin-bottom: 5px; }
+        h2 { font-size: 1.8rem; margin: 20px 0 10px 0; }
+        .sub-title { font-size: 1.1rem; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; }
+
+        /* Khung Avatar tròn giống video */
+        .avatar-wrapper { 
+            position: relative;
+            width: 160px; 
+            height: 160
